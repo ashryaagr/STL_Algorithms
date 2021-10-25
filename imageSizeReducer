@@ -1,0 +1,14 @@
+var reader = new FileReader();
+reader.readAsDataURL(fileItem._file);
+reader.onload = function (event) {
+    var base64 = event.target.result.substring(event.target.result.indexOf(',') + 1, event.target.result.length);
+var cvs = document.createElement('canvas');
+    var source_img_obj = event.target.result;
+    cvs.width = source_img_obj.naturalWidth;
+    cvs.height = source_img_obj.naturalHeight;
+    var ctx = cvs.getContext("2d").drawImage(source_img_obj, 0, 0);
+    var newImageData = cvs.toDataURL(type, 70 / 100);
+    var result_image_obj = new Image();
+    result_image_obj.src = newImageData;
+    console.log(result_image_obj);
+};
